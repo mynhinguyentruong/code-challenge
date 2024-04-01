@@ -1,0 +1,29 @@
+from selenium import webdriver
+import time
+
+# Pablo Picasso Paintings
+# url = "https://www.google.com/search?q=pablo+picasso+paintings&sca_esv=ff0dae4b23f8bbed&sxsrf=ACQVn0-PiyJbRKNBJ6usGXYGDSTf2750Rg%3A1711814508691&ei=bDcIZoHrKaiYptQP5ciqqAg&oq=Pablo+Picasso&gs_lp=Egxnd3Mtd2l6LXNlcnAiDVBhYmxvIFBpY2Fzc28qAggBMg0QLhhDGLEDGIAEGIoFMgoQABiABBiKBRhDMgsQABiABBiKBRiRAjIKEAAYgAQYFBiHAjILEAAYgAQYigUYkQIyChAAGIAEGIoFGEMyChAAGIAEGIoFGEMyChAAGIAEGIoFGEMyChAAGIAEGIoFGEMyBRAAGIAESLwSUMQDWMQDcAN4AZABAJgBfKABfKoBAzAuMbgBA8gBAPgBAvgBAZgCBqACyxrCAgoQABhHGNYEGLADwgINEAAYgAQYigUYQxiwA8ICDhAAGOQCGNYEGLAD2AEBwgITEC4YgAQYigUYQxjIAxiwA9gBAsICHBAuGEMYsQMYgAQYigUYlwUY3AQY3gQY3wTYAQOYAwCIBgGQBhG6BgYIARABGAm6BgYIAhABGAi6BgYIAxABGBSSBwczLjEuNy0yoAfkDA&sclient=gws-wiz-serp"
+
+# Van Gogh Paintings
+url = "https://www.google.com/search?q=van+gogh+paintings&sca_esv=070a86fdf7893579&hl=en&gl=us&sxsrf=ACQVn0-vsQ-PkLARU6tAlzEg0W2SFKxAIA%3A1711816254746&ei=Pj4IZv-PLYiB5OMPgLqN0Aw&oq=van++paintings&gs_lp=Egxnd3Mtd2l6LXNlcnAiDnZhbiAgcGFpbnRpbmdzKgIIADIGEAAYBxgeMgYQABgHGB4yBhAAGAcYHjIGEAAYBxgeMgYQABgHGB4yBhAAGAcYHjIGEAAYBxgeMgYQABgHGB4yBhAAGAcYHjIGEAAYBxgeSN4PULIEWOcHcAJ4AJABAJgBcaABrQOqAQM0LjG4AQPIAQD4AQGYAgWgAo8CwgIKEAAYRxjWBBiwA8ICDRAAGIAEGIoFGEMYsAPCAg4QABjkAhjWBBiwA9gBAcICExAuGIAEGIoFGEMYyAMYsAPYAQKYAwCIBgGQBhG6BgYIARABGAm6BgYIAhABGAiSBwM0LjGgB6Ep&sclient=gws-wiz-serp"
+
+# michelangelo paintings
+# url = "https://www.google.com/search?q=michelangelo+paintings&sca_esv=177e7810b56377bb&sxsrf=ACQVn0_zwSGhiT1AEaiH8eTL5kF1sL7rxw%3A1711816028714&ei=XD0IZoO8KcK6p84Pg96fyAM&oq=Michelangelo+&gs_lp=Egxnd3Mtd2l6LXNlcnAiDU1pY2hlbGFuZ2VsbyAqAggAMg0QABiABBiKBRhDGLEDMgoQABiABBiKBRhDMgoQABiABBiKBRhDMgoQABiABBiKBRhDMgoQABiABBiKBRhDMhYQLhiABBiKBRhDGLEDGIMBGMcBGK8BMgoQABiABBiKBRhDMgoQLhiABBiKBRhDMgoQLhiABBiKBRhDMhYQLhiABBiKBRhDGLEDGIMBGMcBGK8BSL4RUIoDWLwJcAN4AZABAJgBcaAB3wGqAQMwLjK4AQPIAQD4AQL4AQGYAgWgAvIBwgIKEAAYRxjWBBiwA8ICDRAAGIAEGIoFGEMYsAPCAg0QLhhDGLEDGIAEGIoFwgIcEC4YQxixAxiABBiKBRiXBRjcBBjeBBjfBNgBAZgDAIgGAZAGCroGBggBEAEYFJIHAzMuMqAH6Ck&sclient=gws-wiz-serp"
+
+# start web browser
+browser = webdriver.Chrome()
+# browser = webdriver.Firefox()
+
+# get source code
+browser.get(url)
+html = browser.page_source
+time.sleep(2)
+
+# Write and save file into static-html directory
+with open("./static-html/vangogh_paintings.html", "w", encoding="utf-8") as file:
+    file.write(html)
+
+# print(html)
+
+# close web browser
+browser.close()
