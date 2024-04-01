@@ -35,8 +35,10 @@ def extract_artworks_info(path_to_file, art_work_div_classname, img_attribute_na
             obj["name"] = artwork.find_class(div_classname_with_name)[0].text_content() 
             obj["link"] = "https://www.google.com" + link
 
-            if artwork.find_class(div_classname_with_extensions):
-                obj["extensions"] = [artwork.find_class(div_classname_with_extensions)[0].text_content()]
+            extensions_elements = artwork.find_class(div_classname_with_extensions)
+            # Make sure it is not empty string and only add when it is not
+            if extensions_elements and extensions_elements[0].text_content():
+                obj["extensions"] = [extensions_elements[0].text_content()]
 
             obj["image"] = img_src 
             print(obj["name"])
@@ -44,8 +46,8 @@ def extract_artworks_info(path_to_file, art_work_div_classname, img_attribute_na
             artworks_info.append(obj)
 
     # Log result to terminal
-    pp = pprint.PrettyPrinter(depth=4)
-    pp.pprint(artworks_info)
+    # pp = pprint.PrettyPrinter(depth=4)
+    # pp.pprint(artworks_info)
 
     # Write to .json
     result = {"artworks": artworks_info}
@@ -54,7 +56,7 @@ def extract_artworks_info(path_to_file, art_work_div_classname, img_attribute_na
 
     return artworks_info
 
-extract_artworks_info("./static-html/pablo_paintings.html", "iELo6", "src", "pgNMRc", "cxzHyb" )
+extract_artworks_info("./static-html/vangogh_paintings.html", "iELo6", "src", "pgNMRc", "cxzHyb" )
 
 
 
